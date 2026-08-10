@@ -29,7 +29,7 @@ const filteredGeofences = computed(() => {
 
 <template>
   <aside
-    class="absolute left-0 top-0 z-[1000] flex h-screen w-[300px] flex-col overflow-hidden border-r border-slate-200 bg-white shadow-[4px_0_24px_rgba(15,23,42,0.08)]">
+    class="absolute rounded-r-3xl left-0 top-0 z-1000 flex h-screen w-75 flex-col overflow-hidden border-r border-slate-200 bg-white shadow-[4px_0_24px_rgba(15,23,42,0.08)]">
     <div class="shrink-0 border-b border-slate-100 bg-white px-4 pb-4 pt-5">
       <div class="flex items-center gap-3">
         <div

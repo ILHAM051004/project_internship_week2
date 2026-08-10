@@ -1,6 +1,6 @@
 ```vue
 <template>
-  <div class="absolute inset-y-0 left-60 right-0">
+  <div class="absolute inset-y-0 left-70 right-0">
     <div id="map" class="h-full w-full"></div>
   </div>
 </template>
