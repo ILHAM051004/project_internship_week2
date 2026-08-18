@@ -13,6 +13,11 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  runtimeConfig:{
+    public:{
+      apiBase: "https://vms-api-test.transtrack.id/api/v1"
+    }
+  },
   app:{
     head:{
       title: "GPS Monitoring"
