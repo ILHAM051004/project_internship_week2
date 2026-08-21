@@ -2,8 +2,18 @@
 import { computed, ref } from "vue";
 import { useDeviceStore } from "@/stores/deviceStore";
 import { useGeofenceStore } from "@/stores/geofenceStore";
+import { useAuthStore } from "~/stores/authStore.js";
 import DeviceForm from "./DeviceForm.vue";
 import GeofenceForm from "./GeofenceForm.vue";
+
+const authStore = useAuthStore()
+const handleLogout = async () => {
+  await authStore.logout()
+  await navigateTo("/login")
+}
+const goToProfile = () => {
+  navigateTo("/profile")
+}
 
 const store = useDeviceStore();
 const geofenceStore = useGeofenceStore();
@@ -29,7 +39,7 @@ const filteredGeofences = computed(() => {
 
 <template>
   <aside
-    class="absolute rounded-r-3xl left-0 top-0 z-1000 flex h-screen w-75 flex-col overflow-hidden border-r border-slate-200 bg-white shadow-[4px_0_24px_rgba(15,23,42,0.08)]">
+    class="absolute rounded-r-3xl left-0 top-0 z-1000 flex h-screen w-75 flex-col overflow-hidden border-r border-slate-200 bg-slate-50 shadow-[4px_0_24px_rgba(15,23,42,0.08)]">
     <div class="shrink-0 border-b border-slate-100 bg-white px-4 pb-4 pt-5">
       <div class="flex items-center gap-3">
         <div
@@ -276,6 +286,33 @@ const filteredGeofences = computed(() => {
       <div v-else class="min-h-0 flex-1 overflow-y-auto p-3">
         <GeofenceForm />
       </div>
+    </div>
+
+    <div class="shrink-0 border-t border-slate-200 bg-white p-3">
+      <button @click="goToProfile"
+        class="flex w-full items-center gap-3 rounded-xl p-2.5 text-left transition hover:bg-slate-50">
+        <div
+          class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-600">
+          {{ authStore.user?.email?.charAt(0).toUpperCase() || "P" }}
+        </div>
+        <div class="min-w-0 flex-1">
+          <p class="text-xs font-semibold text-slate-800">
+            Profile
+          </p>
+        </div>
+      </button>
+
+      <button @click="handleLogout"
+        class="mt-1 flex w-full items-center gap-3 rounded-xl px-2.5 py-2.5 text-left text-xs font-semibold text-red-500 transition hover:bg-red-50">
+        <div class="flex h-9 w-9 items-center justify-center rounded-full bg-red-50">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="m10 17 5-5-5-5M15 12H3" />
+          </svg>
+        </div>
+        Logout
+      </button>
     </div>
   </aside>
 </template>
