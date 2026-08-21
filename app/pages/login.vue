@@ -22,7 +22,7 @@ const handleLogin = async () => {
   <div class="flex min-h-screen w-screen bg-slate-50">
 
     <div
-      class="relative flex min-h-screen w-1/2 items-center justify-center overflow-hidden bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800">
+      class="relative flex min-h-screen w-1/2 items-center justify-center overflow-hidden bg-linear-to-br from-blue-400 via-blue-600 to-blue-800">
 
       <div class="absolute -left-32 -top-32 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl"></div>
       <div class="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-blue-800/20 blur-3xl"></div>
