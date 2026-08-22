@@ -37,7 +37,7 @@ export const useAuthStore = defineStore("authStore", () => {
       }
 
       token.value = newToken;
-      user.value=response?.data ?? null;
+      user.value = response?.data ?? null;
 
       if (import.meta.client) {
         localStorage.setItem("auth_token", newToken);
@@ -82,6 +82,7 @@ export const useAuthStore = defineStore("authStore", () => {
       if (err?.status === 401 || err?.statusCode === 401) {
         token.value = null;
         user.value = null;
+        error.value = null;
 
         if (import.meta.client) {
           localStorage.removeItem("auth_token");
